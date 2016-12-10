@@ -1,21 +1,44 @@
-# Cours de Javascript : TD 4
+# Cours de Javascript : TD 4 - Étape 1
 
-Le but de ce TD est de réaliser une application web exploitant les APIs de stack exchange pour vous faire manipuler des outils comme Bluebird et Lodash.
+## Cahier des charges
 
-Ce dépôt git va vous guider pour développer une telle application.
+Il y a quelques temps, un client vous a contacté pour pour réaliser une application de sondage en ligne. Ce même client revient vers vous car il sent son business model menacé par stack exchange. Il vous a aussi confié qu'il avait des doutes sur les compétences de son designer web.
 
-## Pour commencer
+Votre client souhaite :
 
-Démarrer votre machine sous Ubuntu. Comme éditeur, vous pouvez utiliser Atom.
+* Une analyse des questions posées sur html sur stackoverflow.
+* Que ces questions soient posés sous la forme d'un QCM avec comme réponses valides :
+  * celle que le questionneur a validé
+  * la plus mise en avant par les utilisateurs
 
-Cloner ce dépôt : `git clone https://github.com/dreimert/cours-javascript-td4.git`.
+## Création du projet
 
-Attention, si vous êtes derrière un proxy, il faut le prendre en compte. Par exemple, à Télécom Saint-Etienne il faut faire la manipulation suivante :
+Il faut commencer par initialiser le projet. À l'aide de votre terminal préféré et du TD précédent, créez un fichier *package.json* qui aura pour valeur de la propriété *name* "stack-html".
 
-    git config --global http.proxy http://cache.univ-st-etienne.fr:3128
+## Installation des dépendances
 
-Au passage, pour les mêmes raisons, faites la commande suivante :
+Node.js propose dans ses bibliothèques standards un client http. Vous pouvez trouver la documentation à cette url : https://nodejs.org/api/http.html.
 
-    npm config set proxy "http://cache.univ-st-etienne.fr:3128"
+Cette API est un peu brute et de nombreuses bibliothèques tierces proposent des implémentations ou des sur-couches plus simple d'usage.
 
-Étape suivante : `git checkout etape-1`.
+Nous allons utiliser Request : https://github.com/request/request.
+
+En utilisant les connaisances du TD précédent, installez Request dans le projet. Votre fichier *package.json* doit contenir une référence à Request.
+
+## Écrire votre première requête
+
+Vous allez maintenant pouvoir écrire du code. Pour ce faire, vous pouvez utiliser [Atom](https://atom.io/). C'est un IDE écrit en Javascript, HTML et CSS.
+
+En utilisant la documentation de Request, écrivez un programme qui récupère le code html de https://www.telecom-st-etienne.fr/ et l'affiche dans le terminal.
+
+Si vous rencontrez des problèmes, n'oubliez pas que vous êtes derrière un proxy :
+
+    let request = require('request').defaults({'proxy':'http://cecinestpaslabonneadrese.com'})
+
+Si tout fonctionne, vous pouvez commencer à travailler.
+
+## La suite...
+
+Vous êtes maintenant capable de récupérer une page web depuis node.
+
+Nous allons pouvoir interroger stack exchange en passant à l'étape 2 : `git checkout etape-2`.
