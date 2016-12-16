@@ -2,7 +2,7 @@
 
 ## Cahier des charges
 
-La suite du cahier des charges est de créer des sondages à par des données de stackexchange.
+La suite du cahier des charges est de créer des sondages à partir des données de stackexchange.
 
 ## Récupérer les données
 
