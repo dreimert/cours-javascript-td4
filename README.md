@@ -17,6 +17,10 @@ Pour récupérer les questions parlant de html, nous allons utiliser l'api de re
 
     http://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html&site=stackoverflow
 
+Mais comme on overquota, utilisons :
+
+    https://github.com/dreimert/cours-javascript-td4/blob/data/data.bin?raw=true
+
 Essayez d'afficher les données renvoyer.
 
 > ### Q1 - Que ce passe-t'il ? Pourquoi ?
@@ -27,17 +31,13 @@ Ce code résout le problème :
 const request = require('request');
 const zlib = require('zlib');
 
-const url = 'http://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html&site=stackoverflow';
+const url = 'https://github.com/dreimert/cours-javascript-td4/blob/data/data.bin?raw=true';
 
 request(url, {encoding: null}, function(err, response, body){
   if (!err && response.statusCode == 200) {
-    if(response.headers['content-encoding'] === 'gzip'){
-      zlib.gunzip(body, function(err, dezipped) {
-        console.log(dezipped.toString());
-      });
-    } else {
-      console.log(body);
-    }
+    zlib.gunzip(body, function(err, dezipped) {
+      console.log(dezipped.toString());
+    });
   }
 });
 ```
