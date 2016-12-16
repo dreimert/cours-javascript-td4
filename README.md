@@ -109,6 +109,10 @@ Il faut maintenant récupérer la liste des personnes qui répondent mais on n'a
 
     http://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=activity&site=stackoverflow
 
+Mais comme on est overquota :
+
+    https://github.com/dreimert/cours-javascript-td4/blob/data/${id}.bin?raw=true
+
 Essayez d'analyser les répondeurs de la première question.
 
 > ### Q6 - Avez-vous une idée de comment faire pour analyser plusieurs questions ? Si oui, essayez !
