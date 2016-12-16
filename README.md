@@ -29,7 +29,7 @@ En utilisant les connaisances du TD précédent, installez Request dans le proje
 
 Vous allez maintenant pouvoir écrire du code. Pour ce faire, vous pouvez utiliser [Atom](https://atom.io/). C'est un IDE écrit en Javascript, HTML et CSS.
 
-En utilisant la documentation de Request, écrivez un programme qui récupère le code html de https://www.telecom-st-etienne.fr/ et l'affiche dans le terminal.
+En utilisant la documentation de Request, écrivez un programme qui récupère le code html de https://www.google.fr et l'affiche dans le terminal.
 
 Si vous rencontrez des problèmes, n'oubliez pas que vous êtes derrière un proxy :
 
