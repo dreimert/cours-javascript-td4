@@ -47,7 +47,7 @@ request(url, {encoding: null}, function(err, response, body){
 À ce stade, la réponse doit s'afficher dans votre console bien qu'elle ne soit pas très facile à lire.
 
 > ### Q3 - Les données semblent structurées dans un format particulier. Quel est-il ?
-> ### Q4 - En javascript, il y a une méthode standard pour décrypter ce format. Quelle est-elle ?
+> ### Q4 - En javascript, il y a une méthode standard pour convertir ce format. Quelle est-elle ?
 
 Essayez de n'afficher que le contenu du tableau items.
 
