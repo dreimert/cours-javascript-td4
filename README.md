@@ -30,7 +30,7 @@ const zlib = require('zlib');
 const url = 'http://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html&site=stackoverflow';
 
 request(url, {encoding: null}, function(err, response, body){
-  if (!error && response.statusCode == 200) {
+  if (!err && response.statusCode == 200) {
     if(response.headers['content-encoding'] === 'gzip'){
       zlib.gunzip(body, function(err, dezipped) {
         console.log(dezipped.toString());
