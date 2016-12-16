@@ -55,7 +55,9 @@ Essayez de n'afficher que le contenu du tableau items.
 
 Nous savons récupérer une liste de questions. Il faut maintenant en extraire les données.
 
-Créez un nouvel object contenant les listes des titres, des tags et des auteurs.
+Afficher dans votre terminal un nouvel object contenant les listes des titres, des tags et des auteurs.
+
+> ### Q5 - Combien de niveau d'indentation avez-vous ?
 
 Si vous indentez votre code ce qui est indispensable pour s'y retrouver, vous devez avoir de nombreux niveaux d'imbrication. Une bonne pratique est de découper en fonctions. Il y a plusieurs avantages : Chaque fonction a un nom qui décrit ce qu'elle fait et le code est plus facile à lire. Découper votre code pour obtenir quelque-chose comme ça :
 
@@ -85,7 +87,7 @@ Il faut maintenant récupérer la liste des personnes qui répondent mais on n'a
 
 Essayez d'analyser les répondeurs de la première question.
 
-> ### Q5 - Avez-vous une idée de comment faire pour analyser plusieurs questions ? Si oui, essayez !
+> ### Q6 - Avez-vous une idée de comment faire pour analyser plusieurs questions ? Si oui, essayez !
 
 Pour faire ce genre de chose à la main en utilisant des callbacks, il faut soit utiliser la récursion soit une mécanique à base de drapeaux un peu compliquée. Il existe aussi de nombreuses bibliothèques qui permettent de gérer ce genre de choses comme async. Mais la bonne solution est d'utiliser les promesses.
 
