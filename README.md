@@ -51,6 +51,30 @@ request(url, {encoding: null}, function(err, response, body){
 
 Essayez de n'afficher que le contenu du tableau items.
 
+## Exercices sur les callbacks
+
+Réécrire le code précédent pour créer une fonction qui récupère et affiche un page staskexchange, votre fonction doit ressembler à ça :
+
+```Javascript
+const getUrlContentAndShow = function(url) {
+  // ...
+});
+getUrlContentAndShow(url);
+```
+
+Le comportement de votre programme ne doit pas changer.
+
+Réécriver encore votre programme en vous interdisant d'utiliser `console.log` dans la fonction getUrlContentAndShow qui devient getUrlContent. Votre code doit ressembler à ça :
+
+```Javascript
+const getUrlContent = function(url, callback) {
+  // ...
+});
+getUrlContent(url, console.log);
+```
+
+Le comportement de votre programme ne doit pas changer.
+
 ## Traiter les données
 
 Nous savons récupérer une liste de questions. Il faut maintenant en extraire les données.
