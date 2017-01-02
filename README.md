@@ -1,4 +1,4 @@
-# Cours de Javascript : TD 4 - Étape 2
+# Cours de Javascript : TD 4 - Étape 2 bis
 
 ## Cahier des charges
 
@@ -17,37 +17,21 @@ Pour récupérer les questions parlant de html, nous allons utiliser l'api de re
 
     http://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html&site=stackoverflow
 
-Mais comme on overquota, utilisons :
+Mais stack-exchange met plusieurs limites, entre autres :
 
-    https://github.com/dreimert/cours-javascript-td4/blob/data/data.bin?raw=true
+* une limite sur le nombre de requêtes par ip. Toutes les machines de Telecom sont derrières le même proxy donc la même ip.
+* les données sont compressées
+
+Des données de démonstration ont été pré-traitées et mises à disposition sur Github, nous utilisons le lien suivant :
+
+    https://github.com/dreimert/cours-javascript-td4/blob/data/data.json?raw=true
 
 Essayez d'afficher les données renvoyer.
 
-> ### Q1 - Que ce passe-t'il ? Pourquoi ?
-
-Ce code résout le problème :
-
-```Javascript
-const request = require('request');
-const zlib = require('zlib');
-
-const url = 'https://github.com/dreimert/cours-javascript-td4/blob/data/data.bin?raw=true';
-
-request(url, {encoding: null}, function(err, response, body){
-  if (!err && response.statusCode == 200) {
-    zlib.gunzip(body, function(err, dezipped) {
-      console.log(dezipped.toString());
-    });
-  }
-});
-```
-
-> ### Q2 - Que fait ce code ? Expliquez-le.
-
 À ce stade, la réponse doit s'afficher dans votre console bien qu'elle ne soit pas très facile à lire.
 
-> ### Q3 - Les données semblent structurées dans un format particulier. Quel est-il ?
-> ### Q4 - En javascript, il y a une méthode standard pour convertir ce format. Quelle est-elle ?
+> ### Q1 - Les données semblent structurées dans un format particulier. Quel est-il ?
+> ### Q2 - En javascript, il y a une méthode standard pour convertir ce format. Quelle est-elle ?
 
 Essayez de n'afficher que le contenu du tableau items.
 
@@ -81,7 +65,7 @@ Nous savons récupérer une liste de questions. Il faut maintenant en extraire l
 
 Afficher dans votre terminal un nouvel object contenant les listes des titres, des tags et des auteurs.
 
-> ### Q5 - Combien de niveau d'indentation avez-vous ?
+> ### Q3 - Combien de niveau d'indentation avez-vous ?
 
 Si vous indentez votre code ce qui est indispensable pour s'y retrouver, vous devez avoir de nombreux niveaux d'imbrication. Une bonne pratique est de découper en fonctions. Il y a plusieurs avantages : Chaque fonction a un nom qui décrit ce qu'elle fait et le code est plus facile à lire. Découper votre code pour obtenir quelque-chose comme ça :
 
@@ -109,13 +93,13 @@ Il faut maintenant récupérer la liste des personnes qui répondent mais on n'a
 
     http://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=activity&site=stackoverflow
 
-Mais comme on est overquota :
+Mais pour simplifier, nous utiliserons :
 
-    https://github.com/dreimert/cours-javascript-td4/blob/data/${id}.bin?raw=true
+    https://github.com/dreimert/cours-javascript-td4/blob/data/${id}.json?raw=true
 
 Essayez d'analyser les répondeurs de la première question.
 
-> ### Q6 - Avez-vous une idée de comment faire pour analyser plusieurs questions ? Si oui, essayez !
+> ### Q4 - Avez-vous une idée de comment faire pour analyser plusieurs questions ? Si oui, essayez !
 
 Pour faire ce genre de chose à la main en utilisant des callbacks, il faut soit utiliser la récursion soit une mécanique à base de drapeaux un peu compliquée. Il existe aussi de nombreuses bibliothèques qui permettent de gérer ce genre de choses comme async. Mais la bonne solution est d'utiliser les promesses.
 
