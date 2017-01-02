@@ -1,44 +1,69 @@
-# Cours de Javascript : TD 4 - Étape 1
+# Cours de Javascript : TD 4 - Étape 0
 
-## Cahier des charges
+Nous allons voir à cette étape quelques exercices pour mieux comprendre les fonctions d'ordre supérieurs et les callbacks.
 
-Il y a quelques temps, un client vous a contacté pour pour réaliser une application de sondage en ligne. Ce même client revient vers vous car il sent son business model menacé par stack exchange. Il vous a aussi confié qu'il avait des doutes sur les compétences de son designer web.
+## Fonctionnement
 
-Votre client souhaite :
+Pour chaque exercice, il y a deux fichiers associés : un dans `exercice` et un dans `test`. Vous devrez modifier le fichier dans `exercice`. Vous pouvez lire le fichier situer dans `test` pour mieux comprendre ce qui est attendu mais pas le modifier.
 
-* Une analyse des questions posées sur html sur stackoverflow.
-* Que ces questions soient posés sous la forme d'un QCM avec comme réponses valides :
-  * celle que le questionneur a validé
-  * la plus mise en avant par les utilisateurs
+Les zones que vous avez le droit de modifier sont délimitées par des commentaires comme ceux-ci :
 
-## Création du projet
+```Javascript
+/* START MOD */
+  Vous pouvez écrire ce que vous voulez ici et même sauter des lignes.
+/* END MOD */
 
-Il faut commencer par initialiser le projet. À l'aide de votre terminal préféré et du TD précédent, créez un fichier *package.json* qui aura pour valeur de la propriété *name* "stack-html".
+/* START MOD */ Cela peut aussi être sur une seule ligne /* END MOD */
+```
 
-## Installation des dépendances
+Entre les balises `/* START MOD */` et `/* END MOD */`, vous pouvez sauter autant de lignes que vous voulez. Par contre, vous n'avez pas le droit de mettre une parenthèse ou une accolade qui interagit avec quelque-chose en dehors de la zone.
 
-Node.js propose dans ses bibliothèques standards un client http. Vous pouvez trouver la documentation à cette url : https://nodejs.org/api/http.html.
+Pour commencer, faite un `npm install`.
 
-Cette API est un peu brute et de nombreuses bibliothèques tierces proposent des implémentations ou des sur-couches plus simple d'usage.
+## Exercice 0 - Fonctionnement des tests
 
-Nous allons utiliser Request : https://github.com/request/request.
+Faite `npm run test_exo0` et regardez le résultat.
 
-En utilisant les connaisances du TD précédent, installez Request dans le projet. Votre fichier *package.json* doit contenir une référence à Request.
+Éditez le fichier `exercices/exo0.js` pour que la fonction `exo0` returne `"Bonjour !"`. Une fois que c'est fait, faite de nouveau `npm run test_exo0` et assurez-vous que cela fonctionne.
 
-## Écrire votre première requête
+C'est la structure minimale d'un exercice. Le fichier déclare un export qui est ensuite récupérer via la mécanique de require dans le test.
 
-Vous allez maintenant pouvoir écrire du code. Pour ce faire, vous pouvez utiliser [Atom](https://atom.io/). C'est un IDE écrit en Javascript, HTML et CSS.
+## Exercice 1 - De l'impératif au fonctionnel
 
-En utilisant la documentation de Request, écrivez un programme qui récupère le code html de https://www.telecom-st-etienne.fr/ et l'affiche dans le terminal.
+### a - exo1-a.js
 
-Si vous rencontrez des problèmes, n'oubliez pas que vous êtes derrière un proxy :
+La fonction doit multiplier par 2 tous les éléments du tableau en paramètre et retourner un nouveau tableau.
 
-    let request = require('request').defaults({'proxy':'http://cecinestpaslabonneadrese.com'})
+Pour tester : `npm run test_exo1-a`.
 
-Si tout fonctionne, vous pouvez commencer à travailler.
+### b - exo1-b.js
+
+On veut rendre notre fonction plus générique que multiplier par 2. On va passer en paramètre le facteur multiplicatif.
+
+La fonction doit multiplier par le facteur tous les éléments du tableau en paramètre et retourner un nouveau tableau.
+
+Pour tester : `npm run test_exo1-b`.
+
+### c - exo1-c.js
+
+On veut rendre notre fonction encore plus générique. Pourquoi se limiter à la multiplication ? Pourquoi pas la division, la soustraction ou même des choses plus complexe ? On va passer en paramètre la fonction a appliquer !
+
+La fonction doit appliquer à tous les éléments du tableau en paramètre la fonction `toApply` et retourner un nouveau tableau.
+
+Pour tester : `npm run test_exo1-c`.
+
+### d - exo1-d.js
+
+La fonction que l'on vient d'écrire existe déjà, c'est la fonction `map` des tableaux Javascript.
+
+La fonction doit appliquer à tous les éléments du tableau en paramètre la fonction `toApply` et retourner un nouveau tableau.
+
+Pour tester : `npm run test_exo1-d`.
+
+### Ce qu'il faut retenir
+
+Comme on peut passer un nombre ou un tableau en paramètre d'une fonction, on peut passer une fonction en paramètre d'une fonction.
 
 ## La suite...
 
-Vous êtes maintenant capable de récupérer une page web depuis node.
-
-Nous allons pouvoir interroger stack exchange en passant à l'étape 2 : `git checkout etape-2`.
+Nous allons pouvoir passer à la pratique en passant à l'étape 1 : `git checkout etape-1`.
