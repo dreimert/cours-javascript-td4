@@ -41,4 +41,4 @@ Si tout fonctionne, vous pouvez commencer à travailler.
 
 Vous êtes maintenant capable de récupérer une page web depuis node.
 
-Nous allons pouvoir interroger stack exchange en passant à l'étape 2 : `git checkout etape-2`.
+Nous allons pouvoir interroger stack exchange en passant à l'étape 2 : `git checkout etape-2-bis`.
