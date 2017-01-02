@@ -64,6 +64,30 @@ Pour tester : `npm run test_exo1-d`.
 
 Comme on peut passer un nombre ou un tableau en paramètre d'une fonction, on peut passer une fonction en paramètre d'une fonction.
 
+## Exercice 2 - Une histoire de callback
+
+Dans cette exercice, `fonctionExterne` représente une fonction mis à disposition par une bibliothèque que vous ne pouvez pas modifier. Le but est de retourner son résultat.
+
+### a - exo2-a.js
+
+La fonction `fonctionExterne` est **synchrone**, c.-à-d., que quand on l'appel, elle retourne instantanément un résultat.
+
+Faite en sorte que la fonction exo2 retourne le résultat de la fonction `fonctionExterne`.
+
+Pour tester : `npm run test_exo2-a`.
+
+### b - exo2-b.js
+
+La fonction `fonctionExterne` est cette fois **asynchrone**, c.-à-d., que quand on l'appel, elle ne retourne pas instantanément un résultat. Pour récupérer le résultat de la fonction, il faut utiliser un callback, c.-à-d., une fonction que l'on passe comme paramètre. De plus, quand un résultat est passé par callback, on ne peut pas le retourner via `return` mais il faut aussi utiliser un callback.
+
+Faite en sorte que la fonction exo2 retourne le résultat de la fonction `fonctionExterne` via un callback.
+
+### Ce qu'il faut retenir
+
+Quand vous utilisez une fonction asynchrone, il faut utiliser un callback mais quand une donnée est obtenu par callback, on ne peut la retourner que par callback.
+
+Pour tester : `npm run test_exo2-b`.
+
 ## La suite...
 
 Nous allons pouvoir passer à la pratique en passant à l'étape 1 : `git checkout etape-1`.

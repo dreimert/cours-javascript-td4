@@ -9,7 +9,9 @@
     "test_exo1-a": "tap test/exo1-a.tape.js",
     "test_exo1-b": "tap test/exo1-b.tape.js",
     "test_exo1-c": "tap test/exo1-c.tape.js",
-    "test_exo1-d": "tap test/exo1-d.tape.js"
+    "test_exo1-d": "tap test/exo1-d.tape.js",
+    "test_exo2-a": "tap test/exo2-a.tape.js",
+    "test_exo2-b": "tap test/exo2-b.tape.js"
   },
   "repository": {
     "type": "git",
