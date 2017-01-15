@@ -13,5 +13,4 @@ module.exports = function exo2(callback) {
   // votre code ici
 
   /* END MOD */
-  fonctionExterne(callback);
 }
