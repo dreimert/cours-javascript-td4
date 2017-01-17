@@ -1,7 +1,7 @@
 {
-  "name": "callback-and-promise",
+  "name": "stack-html",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Cahier des charges",
   "main": "index.js",
   "scripts": {
     "test": "tap test/*.js",
@@ -25,5 +25,9 @@
   "homepage": "https://github.com/dreimert/cours-javascript-td4#readme",
   "devDependencies": {
     "tap": "^8.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {}
 }
