@@ -30,4 +30,5 @@ const extractAnswers = function(content) {
 getUrlContentParseJson(url)
 .then(extractInfos)
 .then(extractAnswers)
+.then(JSON.stringify)
 .then(console.log)
