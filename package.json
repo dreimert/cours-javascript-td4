@@ -1,0 +1,29 @@
+{
+  "name": "callback-and-promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js",
+    "test_exo0": "tap test/exo0.tape.js",
+    "test_exo1-a": "tap test/exo1-a.tape.js",
+    "test_exo1-b": "tap test/exo1-b.tape.js",
+    "test_exo1-c": "tap test/exo1-c.tape.js",
+    "test_exo1-d": "tap test/exo1-d.tape.js",
+    "test_exo2-a": "tap test/exo2-a.tape.js",
+    "test_exo2-b": "tap test/exo2-b.tape.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreimert/cours-javascript-td4.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dreimert/cours-javascript-td4/issues"
+  },
+  "homepage": "https://github.com/dreimert/cours-javascript-td4#readme",
+  "devDependencies": {
+    "tap": "^8.0.1"
+  }
+}
