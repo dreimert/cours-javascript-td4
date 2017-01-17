@@ -127,19 +127,6 @@ returnPromiseFunction(...)
 
 Bon, passons à la pratique. On pourrait promessifier request à la main mais ça a déjà été fait par [request-promise](https://github.com/request/request-promise). Installer request-promise et à l'aide de [l'exemple](https://github.com/request/request-promise#crawl-a-webpage) charger une page. Attention, si vous voulez quelque-chose de lisible ne le faite pas sur stackexchange.
 
-Maintenant, que l'on peut charger une page, pour stackexchange, il faut la décompresser mais zlib utilise un callback. Pas de problème ! On peut promessifier gunzip à la main ou demander à bluebird de le faire. Bluebird est une bibliothèque de promesse qui rajoute plein d'outil mais un nous intéresse particulièrement : [promisify](http://bluebirdjs.com/docs/api/promise.promisify.html).
-
-Installer Bluebird.
-
-Pour promessifier gunzip, il suffit de faire :
-
-```Javascript
-const Promise = require('bluebird');
-const zlib = require('zlib');
-
-const gunzip = Promise.promisify(zlib.gunzip);
-```
-
 Essayez de réécrire `getUrlContentParseJson` en renvoyant une promesse plutôt quand utilisant un callback.
 
 Réécrivez votre code pour qu'il ressemble à celà :
