@@ -26,6 +26,9 @@ const extractInfos = function(content) {
 getUrlContentParseJson(url, function(err, content){
   if(!err) {
     extractInfos(content);
+    const answersUrl = `https://github.com/dreimert/cours-javascript-td4/blob/data/${content.items[0].question_id}.json?raw=true`
+    getUrlContentParseJson(answersUrl, console.log);
+
   } else {
     console.error(err);
   }
