@@ -8,7 +8,7 @@ const fonctionExterne = function() {
 module.exports = function exo2() {
   /* START MOD */
 
-  // votre code ici
+  return fonctionExterne()
 
   /* END MOD */
 }
