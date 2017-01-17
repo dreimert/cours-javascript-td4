@@ -7,7 +7,7 @@ module.exports = function exo1(tableau, toApply) {
   for (let elem of tableau) {
     /* START MOD */
 
-    // votre code ici
+    resultat.push(toApply(elem));
 
     /* END MOD */
   }
