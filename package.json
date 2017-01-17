@@ -29,5 +29,7 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.79.0"
+  }
 }
