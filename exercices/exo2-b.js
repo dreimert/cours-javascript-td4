@@ -10,7 +10,7 @@ const fonctionExterne = function(callback) {
 module.exports = function exo2(callback) {
   /* START MOD */
 
-  // votre code ici
+  fonctionExterne(callback);
 
   /* END MOD */
 }
