@@ -10,4 +10,13 @@ const getUrlContent = function(url, callback) {
   })
 };
 
-getUrlContent(url, console.log);
+getUrlContent(url, function(data) {
+  console.log(data.map(function(question) {
+      return {
+        title: question.title,
+        tags: question.tags,
+        owner: question.owner
+      }
+    }
+  ));
+});
