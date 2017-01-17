@@ -31,7 +31,12 @@ Essayez d'afficher les données renvoyer.
 À ce stade, la réponse doit s'afficher dans votre console bien qu'elle ne soit pas très facile à lire.
 
 > ### Q1 - Les données semblent structurées dans un format particulier. Quel est-il ?
+
+Il est en JSON.
+
 > ### Q2 - En javascript, il y a une méthode standard pour convertir ce format. Quelle est-elle ?
+
+La méthode est JSON.parse().
 
 Essayez de n'afficher que le contenu du tableau items.
 
