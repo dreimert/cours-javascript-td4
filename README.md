@@ -72,6 +72,8 @@ Afficher dans votre terminal un nouvel object contenant les listes des titres, d
 
 > ### Q3 - Combien de niveau d'indentation avez-vous ?
 
+Quatre niveaux d'indendations.
+
 Si vous indentez votre code ce qui est indispensable pour s'y retrouver, vous devez avoir de nombreux niveaux d'imbrication. Une bonne pratique est de découper en fonctions. Il y a plusieurs avantages : Chaque fonction a un nom qui décrit ce qu'elle fait et le code est plus facile à lire. Découper votre code pour obtenir quelque-chose comme ça :
 
 ```Javascript
