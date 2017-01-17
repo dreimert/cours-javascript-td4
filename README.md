@@ -1,44 +1,158 @@
-# Cours de Javascript : TD 4 - Étape 1
+# Cours de Javascript : TD 4 - Étape 2 bis
 
 ## Cahier des charges
 
-Il y a quelques temps, un client vous a contacté pour pour réaliser une application de sondage en ligne. Ce même client revient vers vous car il sent son business model menacé par stack exchange. Il vous a aussi confié qu'il avait des doutes sur les compétences de son designer web.
+Votre client vient de préciser l'analyse qu'il souhaite :
 
-Votre client souhaite :
+* Récupérer les questions parlant de html.
+  * lister les titres des questions
+  * lister les tags relié et leur nombres d'occurrences
+  * lister leurs auteurs
+  * lister les utilisateurs qui répondent
+* Structurer les données dans un fichier json
 
-* Une analyse des questions posées sur html sur stackoverflow.
-* Que ces questions soient posés sous la forme d'un QCM avec comme réponses valides :
-  * celle que le questionneur a validé
-  * la plus mise en avant par les utilisateurs
+## Récupérer les questions parlant de html
 
-## Création du projet
+Pour récupérer les questions parlant de html, nous allons utiliser l'api de recherche. D'après la doc, la route doit ressembler à quelque-chose comme ça :
 
-Il faut commencer par initialiser le projet. À l'aide de votre terminal préféré et du TD précédent, créez un fichier *package.json* qui aura pour valeur de la propriété *name* "stack-html".
+    http://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html&site=stackoverflow
 
-## Installation des dépendances
+Mais stack-exchange met plusieurs limites, entre autres :
 
-Node.js propose dans ses bibliothèques standards un client http. Vous pouvez trouver la documentation à cette url : https://nodejs.org/api/http.html.
+* une limite sur le nombre de requêtes par ip. Toutes les machines de Telecom sont derrières le même proxy donc la même ip.
+* les données sont compressées
 
-Cette API est un peu brute et de nombreuses bibliothèques tierces proposent des implémentations ou des sur-couches plus simple d'usage.
+Des données de démonstration ont été pré-traitées et mises à disposition sur Github, nous utilisons le lien suivant :
 
-Nous allons utiliser Request : https://github.com/request/request.
+    https://github.com/dreimert/cours-javascript-td4/blob/data/data.json?raw=true
 
-En utilisant les connaisances du TD précédent, installez Request dans le projet. Votre fichier *package.json* doit contenir une référence à Request.
+Essayez d'afficher les données renvoyer.
 
-## Écrire votre première requête
+À ce stade, la réponse doit s'afficher dans votre console bien qu'elle ne soit pas très facile à lire.
 
-Vous allez maintenant pouvoir écrire du code. Pour ce faire, vous pouvez utiliser [Atom](https://atom.io/). C'est un IDE écrit en Javascript, HTML et CSS.
+> ### Q1 - Les données semblent structurées dans un format particulier. Quel est-il ?
+> ### Q2 - En javascript, il y a une méthode standard pour convertir ce format. Quelle est-elle ?
 
-En utilisant la documentation de Request, écrivez un programme qui récupère le code html de https://www.google.fr et l'affiche dans le terminal.
+Essayez de n'afficher que le contenu du tableau items.
 
-Si vous rencontrez des problèmes, n'oubliez pas que vous êtes derrière un proxy :
+## Exercices sur les callbacks
 
-    let request = require('request').defaults({'proxy':'http://cecinestpaslabonneadrese.com'})
+Réécrire le code précédent pour créer une fonction qui récupère et affiche un page staskexchange, votre fonction doit ressembler à ça :
 
-Si tout fonctionne, vous pouvez commencer à travailler.
+```Javascript
+const getUrlContentAndShow = function(url) {
+  // ...
+});
+getUrlContentAndShow(url);
+```
 
-## La suite...
+Le comportement de votre programme ne doit pas changer.
 
-Vous êtes maintenant capable de récupérer une page web depuis node.
+Réécriver encore votre programme en vous interdisant d'utiliser `console.log` dans la fonction getUrlContentAndShow qui devient getUrlContent. Votre code doit ressembler à ça :
 
-Nous allons pouvoir interroger stack exchange en passant à l'étape 2 : `git checkout etape-2-bis`.
+```Javascript
+const getUrlContent = function(url, callback) {
+  // ...
+});
+getUrlContent(url, console.log);
+```
+
+Le comportement de votre programme ne doit pas changer.
+
+## Traiter les données
+
+Nous savons récupérer une liste de questions. Il faut maintenant en extraire les données.
+
+Afficher dans votre terminal un nouvel object contenant les listes des titres, des tags et des auteurs.
+
+> ### Q3 - Combien de niveau d'indentation avez-vous ?
+
+Si vous indentez votre code ce qui est indispensable pour s'y retrouver, vous devez avoir de nombreux niveaux d'imbrication. Une bonne pratique est de découper en fonctions. Il y a plusieurs avantages : Chaque fonction a un nom qui décrit ce qu'elle fait et le code est plus facile à lire. Découper votre code pour obtenir quelque-chose comme ça :
+
+```Javascript
+const getUrlContentParseJson = function(url, callback) {
+  // ...
+});
+
+const extractInfos = function(content) {
+  // ...
+};
+
+getUrlContentParseJson(url, function(err, content){
+  if(!err) {
+    extractInfos(content);
+  }
+});
+```
+
+Regardez bien, `getUrlContentParseJson` utilise un paramètre appelé callback. C'est une convention en Javascript pour les fonctions utilisant des appels asynchrones. En effet, télécharger l'url est un appel asynchrone mais il n'y a pas dans le langage de mots clefs pour attendre. Du coup, notre fonction ne peut pas retourner une valeur à la fin de son appel. Un callback permet d'être informer quand l'opèration est terminé et de continuer notre suite de calcules.
+
+## Multiples appels asynchrones
+
+Il faut maintenant récupérer la liste des personnes qui répondent mais on n'a pas cette liste dans les données que nous avons. Il va falloir de nouveau interroger stackexchange mais pour chaque question cette fois. D'après la documentation, l'API ressemble à ça :
+
+    http://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=activity&site=stackoverflow
+
+Mais pour simplifier, nous utiliserons :
+
+    https://github.com/dreimert/cours-javascript-td4/blob/data/${id}.json?raw=true
+
+Essayez d'analyser les répondeurs de la première question.
+
+> ### Q4 - Avez-vous une idée de comment faire pour analyser plusieurs questions ? Si oui, essayez !
+
+Pour faire ce genre de chose à la main en utilisant des callbacks, il faut soit utiliser la récursion soit une mécanique à base de drapeaux un peu compliquée. Il existe aussi de nombreuses bibliothèques qui permettent de gérer ce genre de choses comme async. Mais la bonne solution est d'utiliser les promesses.
+
+Une bonne explication des promesses [par ici](https://developers.google.com/web/fundamentals/getting-started/primers/promises) et [par là](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise).
+
+Les promesses en quelques mots. Une promesse représente un résultat futur, c'est un outil pour contrôler le flux d'exécution de votre programme. Quand on fait un appel asynchrone, plutôt que d'utiliser un callback, la fonction va retourner un promesse. Sur cette promesse, on peut appeler une fonction `then` qui prend deux paramètres : un callback de réussite et un callback d'erreur. Ce qui fait la force des promesses, c'est que si vous ne passez pas un des callbacks, par exemple le callback d'erreur mais que votre promesse retourne une erreur, alors c'est le prochain callback d'erreur qui sera appelé. Et ça permet aussi de les enchainer. Exemple :
+
+```JavaScript
+returnPromiseFunction(...)
+.then(function2)
+.then(function(){
+  //...
+  return result;
+})
+.then(functio3)
+.then(console.log)
+```
+
+Bon, passons à la pratique. On pourrait promessifier request à la main mais ça a déjà été fait par [request-promise](https://github.com/request/request-promise). Installer request-promise et à l'aide de [l'exemple](https://github.com/request/request-promise#crawl-a-webpage) charger une page. Attention, si vous voulez quelque-chose de lisible ne le faite pas sur stackexchange.
+
+Maintenant, que l'on peut charger une page, pour stackexchange, il faut la décompresser mais zlib utilise un callback. Pas de problème ! On peut promessifier gunzip à la main ou demander à bluebird de le faire. Bluebird est une bibliothèque de promesse qui rajoute plein d'outil mais un nous intéresse particulièrement : [promisify](http://bluebirdjs.com/docs/api/promise.promisify.html).
+
+Installer Bluebird.
+
+Pour promessifier gunzip, il suffit de faire :
+
+```Javascript
+const Promise = require('bluebird');
+const zlib = require('zlib');
+
+const gunzip = Promise.promisify(zlib.gunzip);
+```
+
+Essayez de réécrire `getUrlContentParseJson` en renvoyant une promesse plutôt quand utilisant un callback.
+
+Réécrivez votre code pour qu'il ressemble à celà :
+
+```Javascript
+getUrlContentParseJson(url)
+.then(extractInfos)
+.then(console.log)
+```
+
+Revenons à nos moutons. Comment récupérer les répondeurs aux questions ? En quoi les promesses nous aide ?
+
+Grace à la `Promise.all` ! Cette fonction prend un tableau de promesses et retourne un promesses qui est résolue quand toutes les promesses du tableau sont résolues avec comme valeur un tableau contenant tous les résultats.
+
+Essayez de récupérer la liste des répondeurs pour chaque questions.
+
+## Exporter au format JSON
+
+Pour prendre un objet Javascript et le mettre au format JSON, il faut utiliser `JSON.stringify`.
+
+## Cahier des charges rempli
+
+Vous avez maintenant rempli le cahier des charges du client pour l'analyse des données. Vous pouvez passer à l'étape suivante : `git checkout etape-3`
