@@ -5,7 +5,7 @@ module.exports = function exo0() {
   let maChaine;
   /* START MOD */
 
-  // votre code ici
+  maChaine = "Bonjour !";
 
   /* END MOD */
   return maChaine;
